@@ -1,12 +1,26 @@
 package com.eleodoro.dispenca_eleodoro.modelo;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Pedido {
+    private static final Long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String origem;
     private LocalDateTime dataPedido;
     private LocalDateTime dataDeEntrega;
 
+    @Deprecated
     public Pedido() {
     }
 
@@ -33,6 +47,12 @@ public class Pedido {
     }
     public void setDataDeEntrega(LocalDateTime dataDeEntrega) {
         this.dataDeEntrega = dataDeEntrega;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 
     private void realizarPedido() {
