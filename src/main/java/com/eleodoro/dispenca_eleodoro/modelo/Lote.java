@@ -2,15 +2,30 @@
     
 package com.eleodoro.dispenca_eleodoro.modelo;
 
+import java.io.Serializable;
+
+
 import java.time.LocalDateTime;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-public class Lote {
+@Entity
+public class Lote implements Serializable {
 
-    //private Alimento alimento;
+    private static final Long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private Alimento alimento;
     private int quantidade;
     private String codigo;
     private LocalDateTime dateVencimento;
 
+    @Deprecated
     public Lote() {
     }
     
@@ -26,29 +41,26 @@ public class Lote {
     private void consultarLote(String codigo){
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public Long getId() {
+        return id;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public Alimento getAlimento() {
+        return alimento;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
     }
 
     public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
     public LocalDateTime getDateVencimento() {
         return dateVencimento;
     }
-
-    public void setDateVencimento(LocalDateTime dateVencimento) {
-        this.dateVencimento = dateVencimento;
-    }
+    
 
     @Override
     public String toString() {
@@ -88,8 +100,6 @@ public class Lote {
             return false;
         return true;
     }
-    
-
 
 }
     
