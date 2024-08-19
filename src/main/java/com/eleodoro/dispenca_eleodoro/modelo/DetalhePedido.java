@@ -1,10 +1,23 @@
 package com.eleodoro.dispenca_eleodoro.modelo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class DetalhePedido {
+    private static final Long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private int quantidadeSolicitada;
     private double valor;
     private boolean statusEntrega;
 
+    @Deprecated
     public DetalhePedido() {
     }
 
@@ -28,6 +41,12 @@ public class DetalhePedido {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public boolean isStatusEntrega() {
@@ -79,11 +98,5 @@ public class DetalhePedido {
             return false;
         return true;
     }
-
- 
-    
-
-    
-
     
 }
