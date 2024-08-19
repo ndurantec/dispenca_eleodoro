@@ -12,7 +12,6 @@ public class Alimento {
     public Alimento() {
     }
 
-<<<<<<< HEAD
     
     public Alimento(String nome) {
         this.nome = nome;
@@ -30,7 +29,6 @@ public class Alimento {
 
     public void cadastrarAlimento(){
 
-=======
     public Alimento(String alimento) {
         Alimento = alimento;
     }
@@ -44,7 +42,6 @@ public class Alimento {
     }
 
     public void cadastrarAlimento(){
->>>>>>> 2534b5132fa27850bf24cb06b4f0dce1ce9bd59a
         
     }
 
