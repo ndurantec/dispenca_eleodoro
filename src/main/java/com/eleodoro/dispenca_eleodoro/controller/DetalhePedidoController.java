@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/DetalhePedido")
 public class DetalhePedidoController {
 
-    @GetMapping(value = "impremir")
-    public void impremir(){
+    @GetMapping(value = "/imprimir")
+    public void imprimir(){
         System.out.println("Deu certo o controller DetalhePedido");
     }
     
