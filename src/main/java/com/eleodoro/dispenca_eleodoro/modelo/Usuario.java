@@ -1,15 +1,15 @@
 package com.eleodoro.dispenca_eleodoro.modelo;    
 
-public class classeNovaUsuario {
+public class Usuario {
 
     public String nome;
     public String email;
     public  int senha;    
     
-    public classeNovaUsuario() {
+    public Usuario() {
     }
 
-    public classeNovaUsuario(String nome, String email, int senha) {
+    public Usuario(String nome, String email, int senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -35,10 +35,7 @@ public class classeNovaUsuario {
     public int getSenha() {
         return senha;
     }
-    @Override
-    public String toString() {
-        return "classeNovaUsuario [nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
-    }
+
    public void setSenha(int senha) {
         this.senha = senha;
     }
@@ -58,6 +55,7 @@ public class classeNovaUsuario {
         return result;
     }
 
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -66,7 +64,7 @@ public class classeNovaUsuario {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        classeNovaUsuario other = (classeNovaUsuario) obj;
+        Usuario other = (Usuario) obj;
         if (nome == null) {
             if (other.nome != null)
                 return false;
