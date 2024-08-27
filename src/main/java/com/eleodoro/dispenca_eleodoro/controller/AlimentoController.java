@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AlimentoController {
 
     @GetMapping (value = "/imprimir")
-    public void imprimir(){
-        System.out.println(":chegou ate aqui");
+    public String imprimir(){
+        return "chamou o AlimentoController";
     }
     
 }
