@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoteController {
      
     @GetMapping(value = "/imprimir")
-    public void imprimir(){
+    public String imprimir(){
 
-        System.out.println("chegou ate aqui o LoteController");
+        return("chegou ate aqui o LoteController");
 
 
 
