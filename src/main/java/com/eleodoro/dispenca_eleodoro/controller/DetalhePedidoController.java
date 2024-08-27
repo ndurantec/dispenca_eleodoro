@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class DetalhePedidoController {
 
     @GetMapping(value = "/imprimir")
-    public void imprimir(){
-        System.out.println("Deu certo o controller DetalhePedido");
+    public String imprimir(){
+        return "chegou ate aqui DetalhePedido";
     }
     
 }
