@@ -2,6 +2,8 @@ package com.eleodoro.dispenca_eleodoro.dto;
 
 import java.time.LocalDateTime;
 
+import com.eleodoro.dispenca_eleodoro.modelo.Pedido;
+
 public class PedidoDTO {
     private String origem;
     private LocalDateTime dataPedido;
@@ -38,6 +40,10 @@ public class PedidoDTO {
     
     public void setDataDeEntrega(LocalDateTime dataDeEntrega) {
         this.dataDeEntrega = dataDeEntrega;
+    }
+
+    public Pedido novoPedido() {
+        return null;
     }
 
     
