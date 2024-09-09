@@ -2,6 +2,8 @@ package com.eleodoro.dispenca_eleodoro.dto;
 
 import java.time.LocalDateTime;
 
+import com.eleodoro.dispenca_eleodoro.modelo.Lote;
+
 public class LoteDTO {
     
     private int quantidade;
@@ -32,7 +34,12 @@ public class LoteDTO {
     public void setDateVencimento(LocalDateTime dateVencimento) {
         this.dateVencimento = dateVencimento;
     }
+    public Lote novoLote() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'novoLote'");
+    }
     
     
+
 
 }
