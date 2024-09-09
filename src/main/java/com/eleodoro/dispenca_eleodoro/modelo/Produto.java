@@ -50,7 +50,7 @@ public class Produto {
         int result = 1;
         result = prime * result + ((nome == null) ? 0 : nome.hashCode());
         result = prime * result + quantidade;
-        long temp;
+                                                long temp;
         temp = Double.doubleToLongBits(valor);
         result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;
