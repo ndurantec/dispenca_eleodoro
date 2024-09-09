@@ -1,5 +1,7 @@
 package com.eleodoro.dispenca_eleodoro.dto;
 
+import com.eleodoro.dispenca_eleodoro.modelo.DetalhePedido;
+
 public class DetalhePedidoDTO {
     private int quantidadeSolicitada;
     private double valor;
@@ -36,6 +38,10 @@ public class DetalhePedidoDTO {
     
     public void setStatusEntrega(boolean statusEntrega) {
         this.statusEntrega = statusEntrega;
+    }
+
+    public DetalhePedido novoDetalhePedido() {
+        return null;
     }
     
     
