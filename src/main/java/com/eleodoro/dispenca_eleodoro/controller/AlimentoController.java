@@ -1,11 +1,14 @@
 package com.eleodoro.dispenca_eleodoro.controller;
 
 import java.net.URI;
+import java.nio.file.OpenOption;
+import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,11 +49,36 @@ public class AlimentoController {
     
     @GetMapping(value = "/{id}")
      ResponseEntity<Alimento> buscarPorId(@PathVariable Long id) {
-      return (ResponseEntity<Alimento>) alimentoRepository.findById(id)
+       return (ResponseEntity<Alimento>) alimentoRepository.findById(id)
            .map(registro -> ResponseEntity.ok().body(registro))
            .orElse(ResponseEntity.notFound().build());
    }
            
 
 
+   @PutMapping (value = "/{id}")
+   public ResponseEntity<Alimento> update (@PathVariable Long id, @RequestBody Alimento alimento){
+
+       Optional<Alimento> alimentoBanco = alimentoRepository.findById(id);
+
+       Alimento alimentoModificado = alimentoBanco.get();
+
+       alimentoModificado.setNome (alimento.getNome());
+
+       alimentoRepository.save (alimentoModificado);
+
+       return ResponseEntity.noContent().build();
+
+   }
+
+
+private void setNome(String nome) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setNome'");
 }
+
+
+
+
+}
+ 
