@@ -1,11 +1,13 @@
 package com.eleodoro.dispenca_eleodoro.controller;
 
 import java.net.URI;
+import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,6 +53,20 @@ public class DetalhePedidoController {
             .map(registro -> ResponseEntity.ok().body(registro))
             .orElse(ResponseEntity.notFound().build());
 
+}
+
+@PutMapping(value = "/{id}")
+public ResponseEntity<DetalhePedido> update(@PathVariable Long id, @RequestBody DetalhePedido detalhepedido) {
+    
+    Optional<DetalhePedido> detalhepedidoBanco = detalhepedidoRepository.findById(id);
+
+    DetalhePedido detalhepedidoModificado = detalhepedidoBanco.get();
+
+    detalhepedidoModificado.setQuantidadeSolicitada(detalhepedido.getQuantidadeSolicitada());
+
+    detalhepedidoRepository.save(detalhepedidoModificado);
+
+    return ResponseEntity.noContent().build();
 }
 
 
