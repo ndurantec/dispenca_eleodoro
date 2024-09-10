@@ -1,11 +1,14 @@
 package com.eleodoro.dispenca_eleodoro.controller;
 
 import java.net.URI;
+import java.util.Optional;
 
+import org.hibernate.internal.util.collections.ConcurrentReferenceHashMap.Option;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,7 +41,7 @@ public class LoteController {
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
         .path("{/id}")
-        .buildAndExpand(novoLote.getId())
+        .buildAnd java.util.Expand(novoLote.getId())
         .toUri();
 
         return ResponseEntity.created(uri).body(novoLote);
@@ -52,6 +55,25 @@ public class LoteController {
 
 
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Lote>  update(@PathVariable Long id, @RequestBody Lote lote) {
+
+       Optional<Lote> loteBanco = loteRepository.findById(id);
+        
+        
+        Lote loteModificado = loteBanco.get();
+
+        loteModificado.setNome (lote.getDateVencimento());
+        
+        loteRepository.save(loteModificado);
+
+        return ResponseEntity.noContent().build();
+    }
+
+
+
+
 }
 
 

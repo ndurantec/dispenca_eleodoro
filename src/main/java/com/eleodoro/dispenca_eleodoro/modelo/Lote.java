@@ -101,6 +101,11 @@ public class Lote implements Serializable {
         return true;
     }
 
+    public void setNome(LocalDateTime dateVencimento2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setNome'");
+    }
+
 }
     
     
