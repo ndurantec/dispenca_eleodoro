@@ -4,6 +4,7 @@ import java.net.URI;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,4 +43,20 @@ public class LoteController {
 
         return ResponseEntity.created(uri).body(novoLote);
     }
+
+    @GetMapping (value = "/{id}")
+    public ResponseEntity <Lote> buscarPorId (@PathVariable  Long id) {
+        return (ResponseEntity<Lote>) loteRepository.findById(id)
+            .map(registro ->  ResponseEntity.ok().body(registro))
+            .orElse(ResponseEntity.notFound().build());
+
+
+    }
 }
+
+
+
+
+  
+
+
