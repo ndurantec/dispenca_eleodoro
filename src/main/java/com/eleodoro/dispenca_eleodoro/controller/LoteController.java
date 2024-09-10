@@ -41,7 +41,7 @@ public class LoteController {
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
         .path("{/id}")
-        .buildAnd java.util.Expand(novoLote.getId())
+        .buildAndExpand(novoLote.getId())
         .toUri();
 
         return ResponseEntity.created(uri).body(novoLote);
