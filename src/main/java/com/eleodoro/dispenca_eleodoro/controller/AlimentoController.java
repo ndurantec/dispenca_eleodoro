@@ -45,8 +45,8 @@ public class AlimentoController {
 
         return ResponseEntity.created(uri).body(novoAlimento);
     }
+ 
 
-    
     @GetMapping(value = "/{id}")
      ResponseEntity<Alimento> buscarPorId(@PathVariable Long id) {
        return (ResponseEntity<Alimento>) alimentoRepository.findById(id)
@@ -72,11 +72,12 @@ public class AlimentoController {
    }
 
 
-private void setNome(String nome) {
-    // TODO Auto-generated method stub
+/*private void setNome(String nome) {
+     TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'setNome'");
+    
 }
-
+*/
 
 
 
