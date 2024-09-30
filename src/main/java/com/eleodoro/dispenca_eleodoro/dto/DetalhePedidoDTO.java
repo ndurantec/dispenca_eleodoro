@@ -5,12 +5,12 @@ import com.eleodoro.dispenca_eleodoro.modelo.DetalhePedido;
 public class DetalhePedidoDTO {
     private int quantidadeSolicitada;
     private double valor;
-    private boolean statusEntrega;
+    private String statusEntrega;
 
     public DetalhePedidoDTO() {
     }
 
-    public DetalhePedidoDTO(int quantidadeSolicitada, double valor, boolean statusEntrega) {
+    public DetalhePedidoDTO(int quantidadeSolicitada, double valor, String statusEntrega) {
         this.quantidadeSolicitada = quantidadeSolicitada;
         this.valor = valor;
         this.statusEntrega = statusEntrega;
@@ -32,17 +32,15 @@ public class DetalhePedidoDTO {
         this.valor = valor;
     }
 
-    public boolean isStatusEntrega() {
+    public String getStatusEntrega() {
         return statusEntrega;
     }
-    
-    public void setStatusEntrega(boolean statusEntrega) {
-        this.statusEntrega = statusEntrega;
-    }
 
+    public void setStatusEntrega(String statusEntrega) {
+        this.statusEntrega = statusEntrega;
+    } 
+    
     public DetalhePedido novoDetalhePedido() {
-        return null;
+        return new DetalhePedido(quantidadeSolicitada, valor, statusEntrega);
     }
-    
-    
 }

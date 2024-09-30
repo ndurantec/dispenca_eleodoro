@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.eleodoro.dispenca_eleodoro.dto.DetalhePedidoDTO;
 import com.eleodoro.dispenca_eleodoro.modelo.DetalhePedido;
 import com.eleodoro.dispenca_eleodoro.repository.DetalhePedidoRepository;
+import com.eleodoro.dispenca_eleodoro.repository.PedidoRepository;
 
 @RestController
 @RequestMapping(value = "/detalhepedido")
@@ -53,21 +55,28 @@ public class DetalhePedidoController {
             .map(registro -> ResponseEntity.ok().body(registro))
             .orElse(ResponseEntity.notFound().build());
 
-}
+    }
 
-@PutMapping(value = "/{id}")
-public ResponseEntity<DetalhePedido> update(@PathVariable Long id, @RequestBody DetalhePedido detalhepedido) {
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<DetalhePedido> update(@PathVariable Long id, @RequestBody DetalhePedidoDTO detalhepedidoDto) {
+        
+        Optional<DetalhePedido> detalhepedidoBanco = detalhepedidoRepository.findById(id);
+
+        DetalhePedido detalhepedidoModificado = detalhepedidoBanco.get();
+
+        detalhepedidoModificado.setQuantidadeSolicitada(detalhepedidoDto.getQuantidadeSolicitada());
+        detalhepedidoModificado.setStatusEntrega(detalhepedidoDto.getStatusEntrega());
+        detalhepedidoModificado.setValor(detalhepedidoDto.getValor());
+
+        detalhepedidoRepository.save(detalhepedidoModificado);
+
+        return ResponseEntity.ok().body(detalhepedidoModificado);
+    }
+
+
     
-    Optional<DetalhePedido> detalhepedidoBanco = detalhepedidoRepository.findById(id);
 
-    DetalhePedido detalhepedidoModificado = detalhepedidoBanco.get();
-
-    detalhepedidoModificado.setQuantidadeSolicitada(detalhepedido.getQuantidadeSolicitada());
-
-    detalhepedidoRepository.save(detalhepedidoModificado);
-
-    return ResponseEntity.noContent().build();
+    
 }
 
 
-}
