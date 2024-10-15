@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -69,5 +70,33 @@ public ResponseEntity<Pedido> update(@PathVariable Long id, @RequestBody Pedido 
 
     return ResponseEntity.noContent().build();
 }
+
+@PutMapping(value = "/{id}")
+    public ResponseEntity<Pedido> update(@PathVariable Long id, @RequestBody PedidoDTO pedidoDto) {
+        
+        Optional<Pedido> pedidoBanco = pedidoRepository.findById(id);
+
+        Pedido pedidoModificado = pedidoBanco.get();
+
+        pedidoModificado.setOrigem(pedidoDto.getOrigem());
+        pedidoModificado.setDataDeEntrega(pedidoDto.getDataDeEntrega());
+        pedidoModificado.setDataPedido(pedidoDto.getDataPedido());
+
+        pedidoRepository.save(pedidoModificado);
+
+        return ResponseEntity.ok().body(pedidoModificado);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePedido(@PathVariable Long id) {
+    Optional<Pedido> pedidoBanco = pedidoRepository.findById(id);
+
+    if (pedidoBanco.isPresent()) {
+        pedidoRepository.remove(pedidoBanco.get());
+        return ResponseEntity.ok("Pedido with ID " + id + " deleted.");
+    }
+    
+    return ResponseEntity.notFound().build();
+    }
 
 }

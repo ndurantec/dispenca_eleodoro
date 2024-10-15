@@ -17,7 +17,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.eleodoro.dispenca_eleodoro.dto.DetalhePedidoDTO;
 import com.eleodoro.dispenca_eleodoro.modelo.DetalhePedido;
 import com.eleodoro.dispenca_eleodoro.repository.DetalhePedidoRepository;
-import com.eleodoro.dispenca_eleodoro.repository.PedidoRepository;
 
 @RestController
 @RequestMapping(value = "/detalhepedido")
@@ -72,11 +71,18 @@ public class DetalhePedidoController {
 
         return ResponseEntity.ok().body(detalhepedidoModificado);
     }
-
-
     
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteDetalhePedido(@PathVariable Long id) {
+    Optional<DetalhePedido> detalhepedidoBanco = detalhepedidoRepository.findById(id);
 
+    if (detalhepedidoBanco.isPresent()) {
+        detalhepedidoRepository.remove(detalhepedidoBanco.get());
+        return ResponseEntity.ok("DetalhePedido with ID " + id + " deleted.");
+    }
     
+    return ResponseEntity.notFound().build();
+    }
 }
 
 

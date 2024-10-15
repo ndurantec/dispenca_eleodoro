@@ -1,10 +1,11 @@
 package com.eleodoro.dispenca_eleodoro.controller;
 
 import java.net.URI;
-import java.nio.file.OpenOption;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,24 +20,31 @@ import com.eleodoro.dispenca_eleodoro.modelo.Alimento;
 import com.eleodoro.dispenca_eleodoro.repository.AlimentoRepository;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping(value = "/alimento")
 public class AlimentoController {
+
+
+    // prestar atenção todo inicio tem que ter isso caso vc tenha colocado repository
+    @Autowired
+    private AlimentoRepository alimentoRepository;
+
 
     @GetMapping (value = "/imprimir")
     public String imprimir(){
         return "chamou o AlimentoController";
     }
     
-    private AlimentoRepository alimentoRepository;
 
     @PostMapping(value = "/insert")
     public ResponseEntity<Alimento> insert(@RequestBody AlimentoDTO alimentoDTO){
 
-        Alimento novoAlimento = alimentoDTO.novoAlimento();
-        alimentoRepository.save(novoAlimento);
-
         System.out.println("chegou no Metodo insert");
         System.out.println(alimentoDTO.toString());
+
+        Alimento novoAlimento = alimentoDTO.novoAlimento();
+        alimentoRepository.save(novoAlimento);
+        
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
         .path("{/id}")
