@@ -5,6 +5,7 @@ import java.nio.file.OpenOption;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.eleodoro.dispenca_eleodoro.dto.AlimentoDTO;
 import com.eleodoro.dispenca_eleodoro.modelo.Alimento;
+import com.eleodoro.dispenca_eleodoro.modelo.DetalhePedido;
 import com.eleodoro.dispenca_eleodoro.repository.AlimentoRepository;
 
 @RestController
@@ -59,25 +61,31 @@ public class AlimentoController {
    @PutMapping (value = "/{id}")
    public ResponseEntity<Alimento> update (@PathVariable Long id, @RequestBody Alimento alimento){
 
-       Optional<Alimento> alimentoBanco = alimentoRepository.findById(id);
+     
+    Optional<Alimento> alimentoBanco = alimentoRepository.findById(id);
 
        Alimento alimentoModificado = alimentoBanco.get();
 
        alimentoModificado.setNome (alimento.getNome());
 
-       alimentoRepository.save (alimentoModificado);
+       alimentoRepository.save (alimentoModificado.save);
 
-       return ResponseEntity.noContent().build();
+      
+       return ResponseEntity.ok().body(alimentoModificado);
 
    }
 
+@DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAlimento(@PathVariable Long id) {
+    Optional<Alimento> alimentoBanco = alimentoRepository.findById(id);
 
-/*private void setNome(String nome) {
-     TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'setNome'");
+    if (alimentoBanco.isPresent()) {
+        alimentoRepository.remove(alimentoBanco.get());
+        return ResponseEntity.ok("Alimento with ID " + id + " deleted.");
+    }
     
-}
-*/
+    return ResponseEntity.notFound().build();
+    }
 
 
 
