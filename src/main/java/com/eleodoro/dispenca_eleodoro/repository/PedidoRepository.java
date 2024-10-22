@@ -2,6 +2,12 @@ package com.eleodoro.dispenca_eleodoro.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PedidoRepository extends JpaRepository{
+import com.eleodoro.dispenca_eleodoro.modelo.Pedido;
+
+
+public interface PedidoRepository extends JpaRepository<Pedido, Long>{
+
+    void remove(Pedido pedido);
+
     
 }

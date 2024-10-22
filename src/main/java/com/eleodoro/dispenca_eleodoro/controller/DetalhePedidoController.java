@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,21 +54,35 @@ public class DetalhePedidoController {
             .map(registro -> ResponseEntity.ok().body(registro))
             .orElse(ResponseEntity.notFound().build());
 
-}
+    }
 
-@PutMapping(value = "/{id}")
-public ResponseEntity<DetalhePedido> update(@PathVariable Long id, @RequestBody DetalhePedido detalhepedido) {
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<DetalhePedido> update(@PathVariable Long id, @RequestBody DetalhePedidoDTO detalhepedidoDto) {
+        
+        Optional<DetalhePedido> detalhepedidoBanco = detalhepedidoRepository.findById(id);
+
+        DetalhePedido detalhepedidoModificado = detalhepedidoBanco.get();
+
+        detalhepedidoModificado.setQuantidadeSolicitada(detalhepedidoDto.getQuantidadeSolicitada());
+        detalhepedidoModificado.setStatusEntrega(detalhepedidoDto.getStatusEntrega());
+        detalhepedidoModificado.setValor(detalhepedidoDto.getValor());
+
+        detalhepedidoRepository.save(detalhepedidoModificado);
+
+        return ResponseEntity.ok().body(detalhepedidoModificado);
+    }
     
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteDetalhePedido(@PathVariable Long id) {
     Optional<DetalhePedido> detalhepedidoBanco = detalhepedidoRepository.findById(id);
 
-    DetalhePedido detalhepedidoModificado = detalhepedidoBanco.get();
-
-    detalhepedidoModificado.setQuantidadeSolicitada(detalhepedido.getQuantidadeSolicitada());
-
-    detalhepedidoRepository.save(detalhepedidoModificado);
-
-    return ResponseEntity.noContent().build();
+    if (detalhepedidoBanco.isPresent()) {
+        detalhepedidoRepository.remove(detalhepedidoBanco.get());
+        return ResponseEntity.ok("DetalhePedido with ID " + id + " deleted.");
+    }
+    
+    return ResponseEntity.notFound().build();
+    }
 }
 
 
-}

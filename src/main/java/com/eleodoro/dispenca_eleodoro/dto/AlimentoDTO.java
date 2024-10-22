@@ -26,10 +26,8 @@ public class AlimentoDTO {
     }
 
     public Alimento novoAlimento() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'novoAlimento'");
+     return new Alimento(nome);   
     }
-
     
     
 }
