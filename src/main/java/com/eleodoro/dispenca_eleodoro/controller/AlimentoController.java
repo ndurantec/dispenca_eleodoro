@@ -5,11 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.DeleteMapping;
-=======
 import org.springframework.web.bind.annotation.CrossOrigin;
->>>>>>> 6f53d43a0edfb9c6a6e19b05b4c947dc1c12d372
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +18,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.eleodoro.dispenca_eleodoro.dto.AlimentoDTO;
 import com.eleodoro.dispenca_eleodoro.modelo.Alimento;
-import com.eleodoro.dispenca_eleodoro.modelo.DetalhePedido;
 import com.eleodoro.dispenca_eleodoro.repository.AlimentoRepository;
 
 @RestController
@@ -79,19 +75,19 @@ public class AlimentoController {
 
        alimentoModificado.setNome (alimento.getNome());
 
-       alimentoRepository.save (alimentoModificado.save);
+       alimentoRepository.save(alimentoModificado);
 
       
        return ResponseEntity.ok().body(alimentoModificado);
 
    }
 
-@DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAlimento(@PathVariable Long id) {
     Optional<Alimento> alimentoBanco = alimentoRepository.findById(id);
 
     if (alimentoBanco.isPresent()) {
-        alimentoRepository.remove(alimentoBanco.get());
+        alimentoRepository.delete(alimentoBanco.get());
         return ResponseEntity.ok("Alimento with ID " + id + " deleted.");
     }
     
