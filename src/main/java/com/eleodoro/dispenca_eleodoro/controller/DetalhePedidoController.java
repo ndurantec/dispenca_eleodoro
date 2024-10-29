@@ -72,17 +72,17 @@ public class DetalhePedidoController {
         return ResponseEntity.ok().body(detalhepedidoModificado);
     }
     
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteDetalhePedido(@PathVariable Long id) {
-    Optional<DetalhePedido> detalhepedidoBanco = detalhepedidoRepository.findById(id);
+    // @DeleteMapping("/{id}")
+    // public ResponseEntity<String> deleteDetalhePedido(@PathVariable Long id) {
+    // Optional<DetalhePedido> detalhepedidoBanco = detalhepedidoRepository.findById(id);
 
-    if (detalhepedidoBanco.isPresent()) {
-        detalhepedidoRepository.remove(detalhepedidoBanco.get());
-        return ResponseEntity.ok("DetalhePedido with ID " + id + " deleted.");
-    }
+    // if (detalhepedidoBanco.isPresent()) {
+    //     detalhepedidoRepository.remove(detalhepedidoBanco.get());
+    //     return ResponseEntity.ok("DetalhePedido with ID " + id + " deleted.");
+    // }
     
-    return ResponseEntity.notFound().build();
-    }
+    // return ResponseEntity.notFound().build();
+    // }
 }
 
 
