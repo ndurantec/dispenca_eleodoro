@@ -6,6 +6,6 @@ import com.eleodoro.dispenca_eleodoro.modelo.DetalhePedido;
 
 public interface DetalhePedidoRepository extends JpaRepository<DetalhePedido, Long>{
 
-    void remove(DetalhePedido detalhePedido);
+    
     
 }

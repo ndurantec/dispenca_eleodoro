@@ -2,8 +2,10 @@ package com.eleodoro.dispenca_eleodoro.controller;
 
 import java.net.URI;
 import java.util.Optional;
+import java.util.List;
 
 import org.hibernate.internal.util.collections.ConcurrentReferenceHashMap.Option;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.eleodoro.dispenca_eleodoro.dto.LoteDTO;
 import com.eleodoro.dispenca_eleodoro.modelo.Lote;
 import com.eleodoro.dispenca_eleodoro.repository.LoteRepository;
+
+
 
 
 @RestController
@@ -69,6 +73,12 @@ public class LoteController {
         loteRepository.save(loteModificado);
 
         return ResponseEntity.noContent().build();
+    }
+
+    
+    @GetMapping(value = "/findAll")
+    public List<Lote> findAll() {
+        return loteRepository.findAll();
     }
 
 

@@ -7,7 +7,7 @@ import com.eleodoro.dispenca_eleodoro.modelo.Pedido;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 
-    void remove(Pedido pedido);
+   
 
     
 }

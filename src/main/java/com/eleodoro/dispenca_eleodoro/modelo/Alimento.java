@@ -19,7 +19,7 @@ public class Alimento implements Serializable {
     
     private String nome;
 
-    public Object save;
+
 
     public Alimento() {
     }

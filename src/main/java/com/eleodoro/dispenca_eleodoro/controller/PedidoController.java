@@ -71,32 +71,32 @@ public ResponseEntity<Pedido> update(@PathVariable Long id, @RequestBody Pedido 
     return ResponseEntity.noContent().build();
 }
 
-@PutMapping(value = "/{id}")
-    public ResponseEntity<Pedido> update(@PathVariable Long id, @RequestBody PedidoDTO pedidoDto) {
+// @PutMapping(value = "/{id}")
+//     public ResponseEntity<Pedido> update(@PathVariable Long id, @RequestBody PedidoDTO pedidoDto) {
         
-        Optional<Pedido> pedidoBanco = pedidoRepository.findById(id);
+//         Optional<Pedido> pedidoBanco = pedidoRepository.findById(id);
 
-        Pedido pedidoModificado = pedidoBanco.get();
+//         Pedido pedidoModificado = pedidoBanco.get();
 
-        pedidoModificado.setOrigem(pedidoDto.getOrigem());
-        pedidoModificado.setDataDeEntrega(pedidoDto.getDataDeEntrega());
-        pedidoModificado.setDataPedido(pedidoDto.getDataPedido());
+//         pedidoModificado.setOrigem(pedidoDto.getOrigem());
+//         pedidoModificado.setDataDeEntrega(pedidoDto.getDataDeEntrega());
+//         pedidoModificado.setDataPedido(pedidoDto.getDataPedido());
 
-        pedidoRepository.save(pedidoModificado);
+//         pedidoRepository.save(pedidoModificado);
 
-        return ResponseEntity.ok().body(pedidoModificado);
-    }
+//         return ResponseEntity.ok().body(pedidoModificado);
+//     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePedido(@PathVariable Long id) {
-    Optional<Pedido> pedidoBanco = pedidoRepository.findById(id);
+//     @DeleteMapping("/{id}")
+//     public ResponseEntity<String> deletePedido(@PathVariable Long id) {
+//     Optional<Pedido> pedidoBanco = pedidoRepository.findById(id);
 
-    if (pedidoBanco.isPresent()) {
-        pedidoRepository.remove(pedidoBanco.get());
-        return ResponseEntity.ok("Pedido with ID " + id + " deleted.");
-    }
+//     if (pedidoBanco.isPresent()) {
+//         pedidoRepository.remove(pedidoBanco.get());
+//         return ResponseEntity.ok("Pedido with ID " + id + " deleted.");
+//     }
     
-    return ResponseEntity.notFound().build();
-    }
+//     return ResponseEntity.notFound().build();
+//     }
 
 }
