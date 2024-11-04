@@ -20,14 +20,14 @@ public class AlimentoDTO {
         this.nome = nome;
     }
 
+    
+    public Alimento novoAlimento() {
+        return new Alimento(nome);   
+    }
+    
     @Override
     public String toString() {
         return "AlimentoDTO [nome=" + nome + "]";
     }
-
-    public Alimento novoAlimento() {
-     return new Alimento(nome);   
-    }
-    
     
 }

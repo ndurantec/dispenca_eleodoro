@@ -58,7 +58,8 @@ public class AlimentoController {
 
     @GetMapping(value = "/{id}")
      ResponseEntity<Alimento> buscarPorId(@PathVariable Long id) {
-       return (ResponseEntity<Alimento>) alimentoRepository.findById(id)
+       
+        return (ResponseEntity<Alimento>) alimentoRepository.findById(id)
            .map(registro -> ResponseEntity.ok().body(registro))
            .orElse(ResponseEntity.notFound().build());
    }
@@ -69,7 +70,7 @@ public class AlimentoController {
    public ResponseEntity<Alimento> update (@PathVariable Long id, @RequestBody Alimento alimento){
 
      
-    Optional<Alimento> alimentoBanco = alimentoRepository.findById(id);
+        Optional<Alimento> alimentoBanco = alimentoRepository.findById(id);
 
        Alimento alimentoModificado = alimentoBanco.get();
 
@@ -84,14 +85,15 @@ public class AlimentoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAlimento(@PathVariable Long id) {
-    Optional<Alimento> alimentoBanco = alimentoRepository.findById(id);
-
-    if (alimentoBanco.isPresent()) {
-        alimentoRepository.delete(alimentoBanco.get());
-        return ResponseEntity.ok("Alimento with ID " + id + " deleted.");
-    }
     
-    return ResponseEntity.notFound().build();
+        Optional<Alimento> alimentoBanco = alimentoRepository.findById(id);
+
+        if (alimentoBanco.isPresent()) {
+            alimentoRepository.delete(alimentoBanco.get());
+            return ResponseEntity.ok("Alimento with ID " + id + " deleted.");
+        }
+        
+        return ResponseEntity.notFound().build();
     }
 
 
