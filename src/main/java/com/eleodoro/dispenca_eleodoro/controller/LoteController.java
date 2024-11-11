@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.List;
 
 import org.hibernate.internal.util.collections.ConcurrentReferenceHashMap.Option;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +23,7 @@ import com.eleodoro.dispenca_eleodoro.repository.LoteRepository;
 
 
 
+
 @RestController
 @RequestMapping(value = "/lote")
 public class LoteController {
@@ -31,7 +32,7 @@ public class LoteController {
     public String imprimir(){
         return "chegou ate aqui Lote";
     }
-
+    @Autowired
     private LoteRepository loteRepository;
 
     @PostMapping(value = "/insert")

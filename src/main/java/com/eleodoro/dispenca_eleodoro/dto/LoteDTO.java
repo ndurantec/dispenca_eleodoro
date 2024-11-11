@@ -1,5 +1,6 @@
 package com.eleodoro.dispenca_eleodoro.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.eleodoro.dispenca_eleodoro.modelo.Lote;
@@ -8,10 +9,10 @@ public class LoteDTO {
     
     private int quantidade;
     private String codigo;
-    private LocalDateTime dateVencimento;
+    private LocalDate dateVencimento;
     public LoteDTO() {
     }
-    public LoteDTO(int quantidade, String codigo, LocalDateTime dateVencimento) {
+    public LoteDTO(int quantidade, String codigo, LocalDate dateVencimento) {
         this.quantidade = quantidade;
         this.codigo = codigo;
         this.dateVencimento = dateVencimento;
@@ -28,10 +29,10 @@ public class LoteDTO {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-    public LocalDateTime getDateVencimento() {
+    public LocalDate getDateVencimento() {
         return dateVencimento;
     }
-    public void setDateVencimento(LocalDateTime dateVencimento) {
+    public void setDateVencimento(LocalDate dateVencimento) {
         this.dateVencimento = dateVencimento;
     }
     public Lote novoLote() {
