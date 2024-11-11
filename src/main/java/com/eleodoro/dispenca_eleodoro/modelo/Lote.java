@@ -3,9 +3,9 @@
 package com.eleodoro.dispenca_eleodoro.modelo;
 
 import java.io.Serializable;
-
-
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,13 +23,13 @@ public class Lote implements Serializable {
     private Alimento alimento;
     private int quantidade;
     private String codigo;
-    private LocalDateTime dateVencimento;
+    private LocalDate dateVencimento;
 
     @Deprecated
     public Lote() {
     }
     
-    public Lote(int quantidade, String codigo, LocalDateTime dateVencimento) {
+    public Lote(int quantidade, String codigo, LocalDate dateVencimento) {
         this.quantidade = quantidade;
         this.codigo = codigo;
         this.dateVencimento = dateVencimento;
@@ -57,7 +57,7 @@ public class Lote implements Serializable {
         return codigo;
     }
 
-    public LocalDateTime getDateVencimento() {
+    public LocalDate getDateVencimento() {
         return dateVencimento;
     }
     
@@ -101,7 +101,7 @@ public class Lote implements Serializable {
         return true;
     }
 
-    public void setNome(LocalDateTime dateVencimento2) {
+    public void setNome(LocalDate dateVencimento2) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setNome'");
     }
