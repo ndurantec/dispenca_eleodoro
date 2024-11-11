@@ -1,18 +1,19 @@
 package com.eleodoro.dispenca_eleodoro.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.eleodoro.dispenca_eleodoro.modelo.Pedido;
 
 public class PedidoDTO {
     private String origem;
-    private LocalDateTime dataPedido;
-    private LocalDateTime dataDeEntrega;
+    private LocalDate dataPedido;
+    private LocalDate dataDeEntrega;
 
     public PedidoDTO() {
     }
 
-    public PedidoDTO(String origem, LocalDateTime dataPedido, LocalDateTime dataDeEntrega) {
+    public PedidoDTO(String origem, LocalDate dataPedido, LocalDate dataDeEntrega) {
         this.origem = origem;
         this.dataPedido = dataPedido;
         this.dataDeEntrega = dataDeEntrega;
@@ -26,19 +27,19 @@ public class PedidoDTO {
         this.origem = origem;
     }
 
-    public LocalDateTime getDataPedido() {
+    public LocalDate getDataPedido() {
         return dataPedido;
     }
 
-    public void setDataPedido(LocalDateTime dataPedido) {
+    public void setDataPedido(LocalDate dataPedido) {
         this.dataPedido = dataPedido;
     }
 
-    public LocalDateTime getDataDeEntrega() {
+    public LocalDate getDataDeEntrega() {
         return dataDeEntrega;
     }
     
-    public void setDataDeEntrega(LocalDateTime dataDeEntrega) {
+    public void setDataDeEntrega(LocalDate dataDeEntrega) {
         this.dataDeEntrega = dataDeEntrega;
     }
 

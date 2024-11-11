@@ -1,6 +1,7 @@
 package com.eleodoro.dispenca_eleodoro.modelo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -17,14 +18,14 @@ public class Pedido {
     private Long id;
 
     private String origem;
-    private LocalDateTime dataPedido;
-    private LocalDateTime dataDeEntrega;
+    private LocalDate dataPedido;
+    private LocalDate dataDeEntrega;
 
     @Deprecated
     public Pedido() {
     }
 
-    public Pedido(String origem, LocalDateTime dataPedido, LocalDateTime dataDeEntrega) {
+    public Pedido(String origem, LocalDate dataPedido, LocalDate dataDeEntrega) {
         this.origem = origem;
         this.dataPedido = dataPedido;
         this.dataDeEntrega = dataDeEntrega;
@@ -36,16 +37,16 @@ public class Pedido {
     public void setOrigem(String origem) {
         this.origem = origem;
     }
-    public LocalDateTime getDataPedido() {
+    public LocalDate getDataPedido() {
         return dataPedido;
     }
-    public void setDataPedido(LocalDateTime dataPedido) {
+    public void setDataPedido(LocalDate dataPedido) {
         this.dataPedido = dataPedido;
     }
-    public LocalDateTime getDataDeEntrega() {
+    public LocalDate getDataDeEntrega() {
         return dataDeEntrega;
     }
-    public void setDataDeEntrega(LocalDateTime dataDeEntrega) {
+    public void setDataDeEntrega(LocalDate dataDeEntrega) {
         this.dataDeEntrega = dataDeEntrega;
     }
     public Long getId() {
