@@ -69,7 +69,7 @@ public class LoteController {
         
         Lote loteModificado = loteBanco.get();
 
-        loteModificado.setNome (lote.getDateVencimento());
+        loteModificado.setNome(lote.getDateVencimento());
         
         loteRepository.save(loteModificado);
 

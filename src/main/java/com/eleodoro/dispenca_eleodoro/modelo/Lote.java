@@ -41,27 +41,6 @@ public class Lote implements Serializable {
     private void consultarLote(String codigo){
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public Alimento getAlimento() {
-        return alimento;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public LocalDate getDateVencimento() {
-        return dateVencimento;
-    }
-    
-
     @Override
     public String toString() {
         return "Lote [quantidade=" + quantidade + ", codigo=" + codigo + ", dateVencimento=" + dateVencimento + "]";
@@ -104,6 +83,50 @@ public class Lote implements Serializable {
     public void setNome(LocalDate dateVencimento2) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setNome'");
+    }
+
+    public static Long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Alimento getAlimento() {
+        return alimento;
+    }
+
+    public void setAlimento(Alimento alimento) {
+        this.alimento = alimento;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public LocalDate getDateVencimento() {
+        return dateVencimento;
+    }
+
+    public void setDateVencimento(LocalDate dateVencimento) {
+        this.dateVencimento = dateVencimento;
     }
 
 }

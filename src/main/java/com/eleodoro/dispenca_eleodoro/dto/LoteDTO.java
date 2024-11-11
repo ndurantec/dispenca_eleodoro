@@ -17,6 +17,11 @@ public class LoteDTO {
         this.codigo = codigo;
         this.dateVencimento = dateVencimento;
     }
+   
+    public Lote novoLote() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'novoLote'");
+    }
     public int getQuantidade() {
         return quantidade;
     }
@@ -34,10 +39,6 @@ public class LoteDTO {
     }
     public void setDateVencimento(LocalDate dateVencimento) {
         this.dateVencimento = dateVencimento;
-    }
-    public Lote novoLote() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'novoLote'");
     }
     
     
